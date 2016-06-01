@@ -16,8 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import org.zpto.wernerprogs.test.Page1.OnFragmentInteractionListener;
+import org.zpto.wernerprogs.interfaces.OnFragmentInteractionListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnFragmentInteractionListener {
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity
         // Highlight the selected item has been done by NavigationView
         item.setChecked(true);
         // Set action bar title
-        setTitle(item.getTitle());
+        //setTitle(item.getTitle());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -127,7 +126,7 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public void setToolbarTitle(String title) {
+        setTitle(title);
     }
 }

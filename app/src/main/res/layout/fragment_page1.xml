@@ -4,10 +4,22 @@
     android:layout_height="match_parent"
     tools:context="org.zpto.wernerprogs.test.Page1">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:weightSum="1">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Page1"
+        android:layout_weight="0.07"
+        android:padding="7dp"
+        android:gravity="center|center_vertical" />
+    <Button
+        android:id="@+id/page1Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click Me"/>
+    </LinearLayout>
 </FrameLayout>
