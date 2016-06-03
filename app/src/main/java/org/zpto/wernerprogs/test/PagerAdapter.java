@@ -7,32 +7,29 @@ public class PagerAdapter extends FragmentPagerAdapter {
     private String tabTitles[] = new String[] { "Tab1", "Tab2" };
     private Context context;
 
-    public PagerAdapter(FragmentManager fm, int tabCount) {
-        super(fm);
-		this.mNumOfTabs = NumOfTabs;
-	}
-
-	@Override
-	public Fragment getItem(int position) {
-
-		switch (position) {
-			case 0:
-				TabItem1 tab1 = new TabItem1();
-				return tab1;
-			case 1:
-				TabItem1 tab2 = new TabItem1();
-				return tab2;
-			default:
-				return null;
-		}
+	public PagerAdapter(FragmentManager fm, Context context) {
+		super(fm);
+		this.context = context;
 	}
 
 	@Override
 	public int getCount() {
-		return mNumOfTabs;
+		return PAGE_COUNT;
 	}
-    
 
+	@Override
+	public Fragment getItem(int position) {
+		switch (position) {
+			case 0:
+				return new Tab1();
+			case 1:
+				return new Tab2();
+
+			default:
+				return null;
+
+		}
+	}
     @Override
     public CharSequence getPageTitle(int position) {
         // Generate title based on item position

@@ -76,10 +76,9 @@ public class Page1 extends Fragment {
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
         tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-		final int tabCount =2;
 		mListener.setToolbarTitle("Page1");
-		ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-        viewPager.setAdapter(new PagerAdapter(getFragmentManager(),);
+		final ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        viewPager.setAdapter(new PagerAdapter(getChildFragmentManager(),getActivity()));
 		tabLayout.setupWithViewPager(viewPager);
        }
     @Override
