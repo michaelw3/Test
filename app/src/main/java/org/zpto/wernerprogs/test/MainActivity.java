@@ -100,6 +100,15 @@ public class MainActivity extends AppCompatActivity
             case R.id.Page2:
                 fragmentClass = Page2.class;
                 break;
+            case R.id.Page3:
+                fragmentClass = Page3.class;
+                break;
+            case R.id.Page4:
+                fragmentClass = Page4.class;
+                break;
+            case R.id.Page5:
+                fragmentClass = Page5.class;
+                break;
             default:
                 fragmentClass = Page1.class;
         }

@@ -62,20 +62,12 @@ public class Page1 extends Fragment {
        }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-       /**
-		button = (Button) view.findViewById(R.id.page1Button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.setToolbarTitle("Page1");
-            }
-        });
-    **/
-	
 		// Give the TabLayout the ViewPager
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
         tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setTabMode(TabLayout.MODE_FIXED);
 		mListener.setToolbarTitle("Page1");
 		final ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
         viewPager.setAdapter(new PagerAdapter(getChildFragmentManager(),getActivity()));
