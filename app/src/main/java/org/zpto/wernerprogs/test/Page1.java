@@ -3,18 +3,18 @@ package org.zpto.wernerprogs.test;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import org.zpto.wernerprogs.interfaces.OnFragmentInteractionListener;
+import android.support.v4.view.*;
+import android.support.design.widget.*;
+import android.support.v4.app.*;
 
 public class Page1 extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -30,16 +30,16 @@ public class Page1 extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment Page1.
      */
-    // TODO: Rename and change types and number of parameters
-    public static Page1 newInstance(String param1, String param2) {
-        Page1 fragment = new Page1();
+	public static final String ARG_PAGE = "ARG_PAGE";
+
+    private int mPage;
+
+    public static Page1 newInstance(int page) {
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PAGE, page);
+        Page1 fragment = new Page1();
         fragment.setArguments(args);
         return fragment;
     }
@@ -48,8 +48,9 @@ public class Page1 extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+       
+			mPage = getArguments().getInt(ARG_PAGE);
+			
         }
     }
 
@@ -58,18 +59,29 @@ public class Page1 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_page1, container, false);
-
-    }
+       }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        button = (Button) view.findViewById(R.id.page1Button);
+       /**
+		button = (Button) view.findViewById(R.id.page1Button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.setToolbarTitle("Page1");
             }
         });
-    }
+    **/
+	
+		// Give the TabLayout the ViewPager
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
+		final int tabCount =2;
+		mListener.setToolbarTitle("Page1");
+		ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        viewPager.setAdapter(new PagerAdapter(getFragmentManager(),);
+		tabLayout.setupWithViewPager(viewPager);
+       }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
